@@ -26,7 +26,9 @@ button.onclick = function() {
 function init() {
   baby.src = "http://upload.wikimedia.org/wikipedia/commons/2/26/Baby_in_an_infant_bodysuit.jpg";
   football.src = "http://upload.wikimedia.org/wikipedia/commons/6/64/Football_signed_by_Gerald_R._Ford.jpg";
+  window.requestAnimationFrame(animate);
 }
+
 baby.onload = function() {
   var width = 341;
   var height = 512;
@@ -53,5 +55,10 @@ function drawClippedImage(context, image, x, y, width, height, clipCoordinates) 
   context.drawImage(image, x, y, width, height);
   context.restore();
 }
+
+function animate() {
+  window.requestAnimationFrame(animate);
+}
+
 
 init();
