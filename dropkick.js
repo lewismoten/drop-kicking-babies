@@ -1,4 +1,5 @@
 var canvas = document.getElementById("movie");
+var button = document.getElementById("dropkick");
 var context = canvas.getContext("2d");
 var baby = document.createElement("img");
 var football = document.createElement("img");
@@ -16,7 +17,11 @@ var babyOutline = [
 var footballOutline = [
   7,36,33,20,59,16,81,19,107,33,123,53,123,60,113,70,95,
   83,79,88,53,84,27,74,11,60,3,45
-]
+];
+
+button.onclick = function() {
+
+}
 
 baby.onload = function() {
   var width = 341;
