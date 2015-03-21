@@ -13,26 +13,25 @@ var babyOutline = [
 ];
 
 baby.onload = function() {
-  context.save();
-  context.beginPath();
-
-  context.beginPath();
-  makePath(context, babyOutline);
-  context.closePath();
-  context.clip();
-
-  context.drawImage(baby, 0, 0, 512 * baby.width / baby.height, 512);
+  var width = 512 * baby.width / baby.height;
+  var height = 512;
+  drawClippedImage(context, baby, 0, 0, width, height, babyOutline);
 
   context.restore();
 }
 
-function makePath(context, coordinates) {
+function drawClippedImage(context, image, x, y, width, height, clipCoordinates) {
+  context.save();
+  context.beginPath();
   var i = 0;
-  context.moveTo(coordinates[i++], coordinates[i++]);
-  while(i < coordinates.length) {
-    context.lineTo(coordinates[i++], coordinates[i++]);
+  context.moveTo(clipCoordinates[i++], clipCoordinates[i++]);
+  while(i < clipCoordinates.length) {
+    context.lineTo(clipCoordinates[i++], clipCoordinates[i++]);
   }
-  context.lineTo(coordinates[0], coordinates[1]);
+  context.lineTo(clipCoordinates[0], clipCoordinates[1]);
+  context.closePath();
+  context.clip();
+  context.drawImage(image, x, y, width, height);
 }
 
 baby.src = "http://upload.wikimedia.org/wikipedia/commons/2/26/Baby_in_an_infant_bodysuit.jpg";
