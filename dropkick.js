@@ -4,6 +4,7 @@ var context = canvas.getContext("2d");
 var baby = document.createElement("img");
 var football = document.createElement("img");
 var lastDrawnTimeStamp = 0;
+var kickSound = "http://soundbible.com/grab.php?id=1120&type=mp3";
 
 var balls = [];
 
@@ -47,6 +48,7 @@ button.onclick = function() {
 }
 
 function init() {
+  new Audio(kickSound);
   baby.src = "http://upload.wikimedia.org/wikipedia/commons/2/26/Baby_in_an_infant_bodysuit.jpg";
   football.src = "http://upload.wikimedia.org/wikipedia/commons/6/64/Football_signed_by_Gerald_R._Ford.jpg";
   window.requestAnimationFrame(drawFrame);
@@ -96,6 +98,11 @@ function drawFrame(timeStamp) {
 
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawBaby();
+
+    if(balls.indexOf(8) != -1) {
+      var sound = new Audio(kickSound);
+      sound.play();
+    }
 
     for(var i = 0; i < balls.length; i++)
     {
