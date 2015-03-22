@@ -63,6 +63,15 @@ function drawBaby() {
   if(balls.filter(function(el) { return el >= 8 && el <= 10}).length == 0) {
     drawClippedImage(context, baby, -1, -1, width, height, footOutline);
   }
+  else {
+    var center = {x: 200, y: 438, r: 1.5};
+
+    context.translate(center.x, center.y)
+    context.rotate(-center.r);
+    drawClippedImage(context, baby, -117, -334, width, height, footOutline);
+    context.rotate(center.r);
+    context.translate(-center.x, -center.y);
+  }
 }
 
 function drawClippedImage(context, image, x, y, width, height, clipCoordinates) {
