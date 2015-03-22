@@ -5,3 +5,6 @@
 
 ##Audio
 * "[Bounce Sound](http://soundbible.com/1120-Bounce.html)" by Mike Koenig is licensed under [Attribution 3.0](https://creativecommons.org/licenses/by/3.0/us/)
+
+##Libraries
+* "[jQuery](https://jquery.com/)" by The [jQuery Foundation](https://jquery.org/team/) is licensed under [MIT license](http://en.wikipedia.org/wiki/MIT_License)
