@@ -8,8 +8,8 @@
   <body ng-controller="DropKickBabyController as dropkick">
     <h1>Drop Kicking Babies</h1>
     <p>
-      Baby: <select ng-options="kicker.name for kicker in dropkick.kickers" ng-model="selectedKicker"></select><br />
-      Ball: <select ng-options="kickee.name for kickee in dropkick.kickees" ng-model="selectedKickee"></select><br />
+      Baby: <select ng-options="kicker.name for kicker in dropkick.kickers" ng-model="selectedKicker" ng-change="kickerChanged()"></select><br />
+      Ball: <select ng-options="kickee.name for kickee in dropkick.kickees" ng-model="selectedKickee" ng-change="kickeeChanged()"></select><br />
     </p>
     <button ng-show="selectedKicker != null &amp;&amp; selectedKickee != null" ng-click="dropkickBaby()">Dropkick {{selectedKicker.name}} with {{selectedKickee.name}}</button><br />
     <canvas id="movie" width="512" height="512" ></canvas>

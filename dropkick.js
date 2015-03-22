@@ -10,17 +10,7 @@ var lastDrawnTimeStamp = 0;
 var balls = [];
 
 $(document).ready(function(){
-  $("#dropkick").click(function(){balls.push(0);});
   kickerImage.onload = drawKicker;
-  $.getJSON("baby.json", function(data) {
-    kicker = data;
-    kickerImage.src = kicker.image.url;
-  });
-  $.getJSON("football.json", function(data) {
-    kickee = data;
-    kickeeImage.src = kickee.image.url;
-    kicking = new Audio(kickee.sound.url); // pre-load
-  });
   window.requestAnimationFrame(drawFrame);
 });
 
