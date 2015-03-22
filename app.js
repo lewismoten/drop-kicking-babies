@@ -1,17 +1,8 @@
 (function(){
   var app = angular.module('dropkick', []);
-  app.controller('DropKickBabyController', function() {
-    this.babies = babiesGem;
+  app.controller('DropKickBabyController', function($http) {
+    var self = this;
+    this.babies = [];
+    $http.get('babies.json').then(function(res) {self.babies = res.data;});
   });
-
-  var babiesGem = [
-    {
-      name: 'Joe',
-      source: 'baby.json'
-    },
-    {
-      name: 'Bob',
-      source: 'baby.json'
-    }
-  ]
 })();
