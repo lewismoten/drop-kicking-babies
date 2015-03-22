@@ -9,9 +9,8 @@ var kickeeImage = document.createElement("img");
 var lastDrawnTimeStamp = 0;
 var balls = [];
 
-$("#dropkick").click(function(){balls.push(0);});
-
-function init() {
+$(document).ready(function(){
+  $("#dropkick").click(function(){balls.push(0);});
   kickerImage.onload = drawKicker;
   $.getJSON("baby.json", function(data) {
     kicker = data;
@@ -23,7 +22,7 @@ function init() {
     kicking = new Audio(kickee.sound.url); // pre-load
   });
   window.requestAnimationFrame(drawFrame);
-}
+});
 
 function drawKicker() {
   if(kicker == null) {
@@ -125,5 +124,3 @@ Number.prototype.between = function(a, b) {
    var max = Math.max.apply(Math, [a, b]);
    return this >= min && this <= max;
 };
-
-init();
