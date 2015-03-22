@@ -33,20 +33,20 @@ function drawKicker() {
   var body = kicker.body;
   var foot = body.kicker;
 
-  drawClippedImage(context, kickerImage, 0, 0, width, height, body.outline);
+  drawClippedImage(kickerImage, 0, 0, width, height, body.outline);
 
   if(balls.filter(function(frame) {
     var kick = kicker.drop.kick;
     return frame.between(kick.start, kick.end);
     }).length == 0) {
-    drawClippedImage(context, kickerImage, -1, -1, width, height, foot.outline);
+    drawClippedImage(kickerImage, -1, -1, width, height, foot.outline);
   }
   else {
     var pivot = foot.pivot;
     context.translate(pivot.x, pivot.y)
     context.rotate(-pivot.rotate);
 
-    drawClippedImage(context, kickerImage,
+    drawClippedImage(kickerImage,
       pivot.width,
       pivot.height,
       width,
@@ -67,7 +67,7 @@ function offset(pos, x, y) {
   };
 }
 
-function drawClippedImage(context, image, x, y, width, height, clipCoordinates) {
+function drawClippedImage(image, x, y, width, height, clipCoordinates) {
   context.save();
   context.beginPath();
   for(var i = 0; i < clipCoordinates.length; i++) {
@@ -116,7 +116,7 @@ function drawKickee(frame) {
   if(kicker == null || kickee == null) return;
   if(frame >= kicker.drop.path.length) return;
   var pos = kicker.drop.path[frame];
-  drawClippedImage(context, kickeeImage, pos.x, pos.y, kickee.image.width, kickee.image.height, kickee.outline);
+  drawClippedImage(kickeeImage, pos.x, pos.y, kickee.image.width, kickee.image.height, kickee.outline);
 }
 
 Number.prototype.between = function(a, b) {
