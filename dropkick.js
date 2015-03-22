@@ -6,7 +6,7 @@ var kickee = null;
 var kickerImage = document.createElement("img");
 var kickeeImage = document.createElement("img");
 var lastDrawnTimeStamp = 0;
-var kickSound = "http://soundbible.com/grab.php?id=1120&type=mp3";
+var kicking = null;
 
 var balls = [];
 
@@ -40,9 +40,8 @@ function init() {
   $.getJSON("football.json", function(data) {
     kickee = data;
     kickeeImage.src = kickee.image.url;
+    kicking = new Audio(kickee.sound.url); // pre-load
   });
-
-  new Audio(kickSound);
   window.requestAnimationFrame(drawFrame);
 }
 
@@ -109,8 +108,7 @@ function drawFrame(timeStamp) {
     drawKicker();
 
     if(balls.indexOf(8) != -1) {
-      var sound = new Audio(kickSound);
-      sound.play();
+      new Audio(kickee.sound.url).play();
     }
 
     for(var i = 0; i < balls.length; i++)

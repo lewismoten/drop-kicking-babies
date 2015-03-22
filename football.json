@@ -1,10 +1,12 @@
 {
   "title": "Football",
   "image": {
-      "url": "http://upload.wikimedia.org/wikipedia/commons/6/64/Football_signed_by_Gerald_R._Ford.jpg",
-      "width": 125,
-      "height": 100,
-      "name": "Football signed by Gerald R. Ford",
+    "name": "Football signed by Gerald R. Ford",
+    "url": "http://upload.wikimedia.org/wikipedia/commons/6/64/Football_signed_by_Gerald_R._Ford.jpg",
+    "width": 125,
+    "height": 100,
+    "attribution": {
+      "url": "http://commons.wikimedia.org/wiki/File:Football_signed_by_Gerald_R._Ford.jpg",
       "author": {
         "name": "Bdcousineau",
         "url": "http://commons.wikimedia.org/wiki/User:Bdcousineau"
@@ -13,6 +15,7 @@
         "name": "Public Domain",
         "url": "http://en.wikipedia.org/wiki/Public_domain"
       }
+    }
   },
   "outline": [
     {"x": 7, "y": 36},
@@ -29,5 +32,20 @@
     {"x": 27, "y": 74},
     {"x": 11, "y": 60},
     {"x": 3, "y": 45}
-  ]
+  ],
+  "sound": {
+    "name": "Bounce Sound",
+    "url": "http://soundbible.com/grab.php?id=1120&type=mp3",
+    "attribution": {
+      "url": "http://soundbible.com/1120-Bounce.html",
+      "author": {
+        "name": "Mike Koenig",
+        "url": null
+      },
+      "license": {
+        "name": "Public Domain",
+        "url": "http://en.wikipedia.org/wiki/Public_domain"
+      }
+    }
+  }
 }
