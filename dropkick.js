@@ -10,23 +10,6 @@ var kicking = null;
 
 var balls = [];
 
-var dropPath = [
-  {x:212,y:5},
-  {x:209,y:53},
-  {x:209,y:103},
-  {x:209,y:131},
-  {x:208,y:172},
-  {x:206,y:219},
-  {x:209,y:269},
-  {x:206,y:323},
-  {x:208,y:375},
-  {x:286,y:317},
-  {x:358,y:286},
-  {x:424,y:280},
-  {x:474,y:283},
-  {x:508,y:290}
-  ];
-
 button.onclick = function() {
   balls.push(0);
 }
@@ -56,7 +39,10 @@ function drawKicker() {
 
   drawClippedImage(context, kickerImage, 0, 0, width, height, body.outline);
 
-  if(balls.filter(function(el) { return el >= 8 && el <= 10}).length == 0) {
+  if(balls.filter(function(frame) {
+    var kick = kicker.drop.kick;
+    return frame.between(kick.start, kick.end);
+    }).length == 0) {
     drawClippedImage(context, kickerImage, -1, -1, width, height, foot.outline);
   }
   else {
@@ -101,13 +87,13 @@ function drawClippedImage(context, image, x, y, width, height, clipCoordinates) 
 
 function drawFrame(timeStamp) {
 
-  if(timeStamp - lastDrawnTimeStamp > 50) {
+  if(canDraw(timeStamp)) {
     lastDrawnTimeStamp = timeStamp;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawKicker();
 
-    if(balls.indexOf(8) != -1) {
+    if(balls.indexOf(kicker.drop.kick.start) != -1) {
       new Audio(kickee.sound.url).play();
     }
 
@@ -116,7 +102,7 @@ function drawFrame(timeStamp) {
       var frame = balls[i]++;
       drawKickee(frame);
       frame++;
-      if(frame >= dropPath.length) {
+      if(frame >= kicker.drop.path.length) {
         balls.splice(i--, 1);
       }
     }
@@ -125,11 +111,22 @@ function drawFrame(timeStamp) {
   window.requestAnimationFrame(drawFrame);
 }
 
+function canDraw(timeStamp) {
+  return kicker != null
+    && kickee != null
+    && timeStamp - lastDrawnTimeStamp > 50;
+}
 function drawKickee(frame) {
-  if(frame >= dropPath.length) return;
-  if(kickee == null) return;
-  var pos = dropPath[frame];
+  if(kicker == null || kickee == null) return;
+  if(frame >= kicker.drop.path.length) return;
+  var pos = kicker.drop.path[frame];
   drawClippedImage(context, kickeeImage, pos.x, pos.y, kickee.image.width, kickee.image.height, kickee.outline);
 }
+
+Number.prototype.between = function(a, b) {
+   var min = Math.min.apply(Math, [a,b]);
+   var max = Math.max.apply(Math, [a, b]);
+   return this >= min && this <= max;
+};
 
 init();
