@@ -3,16 +3,13 @@ var button = document.getElementById("dropkick");
 var context = canvas.getContext("2d");
 var kicker = null;
 var kickee = null;
+var kicking = null;
 var kickerImage = document.createElement("img");
 var kickeeImage = document.createElement("img");
 var lastDrawnTimeStamp = 0;
-var kicking = null;
-
 var balls = [];
 
-button.onclick = function() {
-  balls.push(0);
-}
+$("#dropkick").click(function(){balls.push(0);});
 
 function init() {
   kickerImage.onload = drawKicker;
