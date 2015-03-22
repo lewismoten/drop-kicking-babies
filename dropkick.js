@@ -1,30 +1,14 @@
 var canvas = document.getElementById("movie");
 var button = document.getElementById("dropkick");
 var context = canvas.getContext("2d");
-var baby = document.createElement("img");
-var football = document.createElement("img");
+var kicker = null;
+var kickee = null;
+var kickerImage = document.createElement("img");
+var kickeeImage = document.createElement("img");
 var lastDrawnTimeStamp = 0;
 var kickSound = "http://soundbible.com/grab.php?id=1120&type=mp3";
 
 var balls = [];
-
-var babyOutline = [
-  178,361,184,352,245,339,255,334,258,318,257,307,259,285,262,279,257,250,240,
-  208,239,189,220,159,194,140,200,127,198,97,204,73,191,48,164,36,125,40,110,
-  55,107,79,112,103,106,108,112,129,119,131,128,148,96,149,75,173,70,192,52,
-  253,49,287,46,302,57,321,66,330,55,355,61,380,85,412,110,427,114,429,106,453,
-  112,473,133,476,138,470,141,450,119,433,128,418,137,409,120,374,139,380,
-  164,374
-  ];
-
-var footOutline = [
-  178,361,182,352,206,349,244,334,248,345,243,365,223,387,198,406,171,416,
-  163,424,154,442,139,451,129,444,117,431,129,419,141,405
-]
-var footballOutline = [
-  7,36,33,20,59,16,81,19,107,33,123,53,123,60,113,70,95,
-  83,79,88,53,84,27,74,11,60,3,45
-  ];
 
 var dropPath = [
   {x:212,y:5},
@@ -48,43 +32,68 @@ button.onclick = function() {
 }
 
 function init() {
+  kickerImage.onload = drawKicker;
+  $.getJSON("baby.json", function(data) {
+    kicker = data;
+    kickerImage.src = kicker.image.url;
+  });
+  $.getJSON("football.json", function(data) {
+    kickee = data;
+    kickeeImage.src = kickee.image.url;
+  });
+
   new Audio(kickSound);
-  baby.src = "http://upload.wikimedia.org/wikipedia/commons/2/26/Baby_in_an_infant_bodysuit.jpg";
-  football.src = "http://upload.wikimedia.org/wikipedia/commons/6/64/Football_signed_by_Gerald_R._Ford.jpg";
   window.requestAnimationFrame(drawFrame);
 }
 
-baby.onload = function() {
-  drawBaby();
-}
+function drawKicker() {
+  if(kicker == null) {
+    return;
+  }
+  var width = kicker.image.width;
+  var height = kicker.image.height;
+  var body = kicker.body;
+  var foot = body.kicker;
 
-function drawBaby() {
-  var width = 341;
-  var height = 512;
-  drawClippedImage(context, baby, 0, 0, width, height, babyOutline);
+  drawClippedImage(context, kickerImage, 0, 0, width, height, body.outline);
+
   if(balls.filter(function(el) { return el >= 8 && el <= 10}).length == 0) {
-    drawClippedImage(context, baby, -1, -1, width, height, footOutline);
+    drawClippedImage(context, kickerImage, -1, -1, width, height, foot.outline);
   }
   else {
-    var center = {x: 200, y: 438, r: 1.5};
+    var pivot = foot.pivot;
+    context.translate(pivot.x, pivot.y)
+    context.rotate(-pivot.rotate);
 
-    context.translate(center.x, center.y)
-    context.rotate(-center.r);
-    drawClippedImage(context, baby, -117, -334, width, height, footOutline);
-    context.rotate(center.r);
-    context.translate(-center.x, -center.y);
+    drawClippedImage(context, kickerImage,
+      pivot.width,
+      pivot.height,
+      width,
+      height,
+      foot.outline);
+
+    context.rotate(pivot.rotate);
+    context.translate(
+      -pivot.x,
+      -pivot.y);
   }
+}
+
+function offset(pos, x, y) {
+  return {
+    x: pos.x + x,
+    y: pos.y + y
+  };
 }
 
 function drawClippedImage(context, image, x, y, width, height, clipCoordinates) {
   context.save();
   context.beginPath();
-  var i = 0;
-  context.moveTo(clipCoordinates[i++] + x, clipCoordinates[i++] + y);
-  while(i < clipCoordinates.length) {
-    context.lineTo(clipCoordinates[i++] + x, clipCoordinates[i++] + y);
+  for(var i = 0; i < clipCoordinates.length; i++) {
+    var pos = offset(clipCoordinates[i], x, y);
+    if(i == 0) context.moveTo(pos.x, pos.y);
+    context.lineTo(pos.x, pos.y);
   }
-  context.lineTo(clipCoordinates[0] + x, clipCoordinates[1] + y);
   context.closePath();
   context.clip();
   context.drawImage(image, x, y, width, height);
@@ -97,7 +106,7 @@ function drawFrame(timeStamp) {
     lastDrawnTimeStamp = timeStamp;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
-    drawBaby();
+    drawKicker();
 
     if(balls.indexOf(8) != -1) {
       var sound = new Audio(kickSound);
@@ -107,7 +116,7 @@ function drawFrame(timeStamp) {
     for(var i = 0; i < balls.length; i++)
     {
       var frame = balls[i]++;
-      drawBall(frame);
+      drawKickee(frame);
       frame++;
       if(frame >= dropPath.length) {
         balls.splice(i--, 1);
@@ -118,12 +127,11 @@ function drawFrame(timeStamp) {
   window.requestAnimationFrame(drawFrame);
 }
 
-function drawBall(frame) {
+function drawKickee(frame) {
   if(frame >= dropPath.length) return;
-  var width = 125;
-  var height = 100;
+  if(kickee == null) return;
   var pos = dropPath[frame];
-  drawClippedImage(context, football, pos.x, pos.y, width, height, footballOutline);
+  drawClippedImage(context, kickeeImage, pos.x, pos.y, kickee.image.width, kickee.image.height, kickee.outline);
 }
 
 init();
