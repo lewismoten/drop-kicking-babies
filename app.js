@@ -2,7 +2,9 @@
   var app = angular.module('dropkick', []);
   app.controller('DropKickBabyController', function($http) {
     var self = this;
-    this.babies = [];
-    $http.get('babies.json').then(function(res) {self.babies = res.data;});
+    self.kickers = [];
+    self.kickees = [];
+    $http.get('kickers.json').then(function(res) {self.kickers = res.data;});
+    $http.get('kickees.json').then(function(res) {self.kickees = res.data;});
   });
 })();

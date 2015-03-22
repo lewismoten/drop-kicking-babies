@@ -8,9 +8,10 @@
   <body ng-controller="DropKickBabyController as dropkick">
     <h1>Drop Kicking Babies</h1>
     <p>
-      Baby: <select ng-options="baby.name for baby in dropkick.babies" ng-model="selected" ng-change="dropkick.canKick = true"></select><br />
+      Baby: <select ng-options="kicker.name for kicker in dropkick.kickers" ng-model="selectedKicker"></select><br />
+      Ball: <select ng-options="kickee.name for kickee in dropkick.kickees" ng-model="selectedKickee"></select><br />
     </p>
-    <button ng-show="dropkick.canKick" id="dropkick">Dropkick with {{selected.name}}</button><br />
+    <button ng-show="selectedKicker != null &amp;&amp; selectedKickee != null" id="dropkick">Dropkick {{selectedKicker.name}} with {{selectedKickee.name}}</button><br />
     <canvas id="movie" width="512" height="512" ></canvas>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
