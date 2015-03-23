@@ -6,9 +6,16 @@
       var self = this;
       self.kickers = [];
       self.kickees = [];
-      $http.get('kickers.json').then(function(res) {self.kickers = res.data;});
-      $http.get('kickees.json').then(function(res) {self.kickees = res.data;});
-
+      $http.get('kickers.json').then(function(res) {
+        self.kickers = res.data;
+        $scope.selectedKicker = self.kickers[0];
+        $scope.kickerChanged();
+        });
+      $http.get('kickees.json').then(function(res) {
+        self.kickees = res.data;
+        $scope.selectedKickee = self.kickees[0];
+        $scope.kickeeChanged();
+      });
       $scope.dropkickBaby = function() {
         balls.push(0);
       };
