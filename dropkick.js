@@ -80,7 +80,7 @@ function drawFrame(timeStamp) {
     drawKicker();
 
     if(balls.indexOf(kicker.drop.kick.start) != -1) {
-      new Audio(kickee.sound.url).play();
+      kicking.play();
     }
 
     for(var i = 0; i < balls.length; i++)
