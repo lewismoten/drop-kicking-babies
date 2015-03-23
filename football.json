@@ -35,7 +35,10 @@
   ],
   "sound": {
     "name": "Bounce Sound",
-    "url": "http://soundbible.com/grab.php?id=1120&type=mp3",
+    "file": {
+      "urls": ["http://soundbible.com/grab.php?id=1120&type=mp3"],
+      "format": "mp3"
+    },
     "attribution": {
       "url": "http://soundbible.com/1120-Bounce.html",
       "author": {
