@@ -10,3 +10,4 @@
 * "[jQuery](https://jquery.com/)" by [The jQuery Foundation](https://jquery.org/team/) is licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
 * "[Bootstrap](http://getbootstrap.com)" by [Twitter, Inc.](https://twitter.com/) is licensed under [MIT](https://github.com/twbs/bootstrap/blob/master/LICENSE)
 * "[AngularJS](http://angularjs.org)" by [Google, Inc.](http://google.com) is licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
+* "[howler.js](http://howler.js)" by [James Simpson of GoldFire Studios](http://goldfirestudios.com) is licensed under [MIT](http://en.wikipedia.org/wiki/MIT_License)
