@@ -47,15 +47,15 @@
      <!-- Example row of columns -->
      <div class="row">
        <div class="col-md-4">
-         <h2>Baby</h2>
-         <p><select ng-options="kicker.name for kicker in dropkick.kickers" ng-model="selectedKicker" ng-change="kickerChanged()"></select></p>
-         <p>Choose the baby to be dropkicking. Any baby will be great!</p>
-       </div>
-       <div class="col-md-4">
-         <h2>Object</h2>
+         <h2>Dropkick</h2>
          <p><select ng-options="kickee.name for kickee in dropkick.kickees" ng-model="selectedKickee" ng-change="kickeeChanged()"></select><br /></p>
-         <p>Choose an object that is dropkicked.</p>
+         <p>Choose something to dropkick.</p>
       </div>
+       <div class="col-md-4">
+         <h2>Babies</h2>
+         <p><select ng-options="kicker.name for kicker in dropkick.kickers" ng-model="selectedKicker" ng-change="kickerChanged()"></select></p>
+         <p>Choose the baby to be dropkicking. We love Dropkicking Babies!</p>
+       </div>
        <div class="col-md-4">
          <h2>Action!</h2>
          <p>Drockicking baby is ready to go!</p>
