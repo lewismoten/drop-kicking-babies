@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatable" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
+
     <title>Drop Kicking Babies</title>
     <meta name="description" content="Dropkicking Babies" />
     <meta name="author" content="Lewis Moten" />
@@ -21,13 +21,54 @@
     <![endif]-->
   </head>
   <body ng-controller="DropKickBabyController as dropkick">
-    <h1>Drop Kicking Babies</h1>
-    <p>
-      Baby: <select ng-options="kicker.name for kicker in dropkick.kickers" ng-model="selectedKicker" ng-change="kickerChanged()"></select><br />
-      Ball: <select ng-options="kickee.name for kickee in dropkick.kickees" ng-model="selectedKickee" ng-change="kickeeChanged()"></select><br />
-    </p>
-    <button ng-show="selectedKicker != null &amp;&amp; selectedKickee != null" ng-click="dropkickBaby()">Dropkick {{selectedKicker.name}} with {{selectedKickee.name}}</button><br />
-    <canvas id="movie" width="512" height="512" ></canvas>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+     <div class="container">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#">Dropkicking Babies</a>
+       </div>
+     </div>
+   </nav>
+
+   <!-- Main jumbotron for a primary marketing message or call to action -->
+   <div class="jumbotron">
+     <div class="container">
+       <p><canvas id="movie" width="512" height="512" ></canvas></p>
+     </div>
+   </div>
+
+   <div class="container">
+     <!-- Example row of columns -->
+     <div class="row">
+       <div class="col-md-4">
+         <h2>Baby</h2>
+         <p><select ng-options="kicker.name for kicker in dropkick.kickers" ng-model="selectedKicker" ng-change="kickerChanged()"></select></p>
+         <p>Choose the baby to be dropkicking. Any baby will be great!</p>
+       </div>
+       <div class="col-md-4">
+         <h2>Object</h2>
+         <p><select ng-options="kickee.name for kickee in dropkick.kickees" ng-model="selectedKickee" ng-change="kickeeChanged()"></select><br /></p>
+         <p>Choose an object that is dropkicked.</p>
+      </div>
+       <div class="col-md-4">
+         <h2>Action!</h2>
+         <p>Drockicking baby is ready to go!</p>
+         <p><a class="btn btn-default" href="#" role="button" ng-show="selectedKicker != null &amp;&amp; selectedKickee != null" ng-click="dropkickBaby()">Dropkick {{selectedKicker.name}} with {{selectedKickee.name}} &raquo;</a></p>
+       </div>
+     </div>
+
+     <hr>
+
+     <footer>
+       <p>By <a href="https://github.com/lewismoten">Lewis Moten</a></p>
+     </footer>
+   </div> <!-- /container -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
