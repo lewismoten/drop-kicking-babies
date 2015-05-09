@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('dropkick', []);
+  var app = angular.module('app', []);
   app.controller('DropKickBabyController', [
     '$scope', '$http',
     function($scope, $http) {
@@ -19,7 +19,9 @@
       $scope.dropkickBaby = function() {
         balls.push(0);
       };
-
+$scope.hello = function() {
+  return "world";
+}
       $scope.kickerChanged = function() {
         $http.get($scope.selectedKicker.url).then(
           function(res){
