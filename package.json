@@ -1,0 +1,25 @@
+{
+  "name": "drop-kicking-babies",
+  "version": "1.0.1",
+  "description": "Cute babies drop-kicking objects",
+  "main": "app.js",
+  "scripts": {
+    "test": "python3 -m http.server --cgi 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lewismoten/drop-kicking-babies.git"
+  },
+  "keywords": [
+    "dropkick",
+    "baby",
+    "football",
+    "soccer"
+  ],
+  "author": "Lewis Moten",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lewismoten/drop-kicking-babies/issues"
+  },
+  "homepage": "https://github.com/lewismoten/drop-kicking-babies#readme"
+}
