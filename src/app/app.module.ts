@@ -16,6 +16,8 @@ import { DropKickComponent } from './drop-kick/drop-kick.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: DropKickComponent },
+      { path: 'drop-kicking-babies', component: DropKickComponent },
+      { path: 'docs', component: DropKickComponent },
     ])
   ],
   declarations: [
