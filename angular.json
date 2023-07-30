@@ -5,14 +5,14 @@
     "projects": {
       "angular.io-example": {
         "projectType": "application",
-        "root": "",
+        "root": "/drop-kicking-babies/",
         "sourceRoot": "src",
         "prefix": "app",
         "architect": {
           "build": {
             "builder": "@angular-devkit/build-angular:browser",
             "options": {
-              "outputPath": "dist",
+              "outputPath": "docs",
               "index": "src/index.html",
               "main": "src/main.ts",
               "polyfills": ["zone.js"],
