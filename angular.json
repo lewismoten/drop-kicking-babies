@@ -5,7 +5,7 @@
     "projects": {
       "angular.io-example": {
         "projectType": "application",
-        "root": "/drop-kicking-babies/",
+        "root": "docs",
         "sourceRoot": "src",
         "prefix": "app",
         "architect": {
