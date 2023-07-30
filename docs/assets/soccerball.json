@@ -1,0 +1,55 @@
+{
+    "title": "Soccer Ball",
+    "image": {
+      "name": "Adidas Telstar-style ball, with the familiar black and white spherical truncated icosahedron pattern, introduced in 1970",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Football_Pallo_valmiina-cropped.jpg",
+      "width": 296,
+      "height": 285,
+      "attribution": {
+        "url": "https://en.wikipedia.org/wiki/Ball_(association_football)#/media/File:Football_Pallo_valmiina-cropped.jpg",
+        "author": {
+          "name": "Sir James",
+          "url": "https://commons.wikimedia.org/wiki/User:Sir_James"
+        },
+        "license": {
+          "name": "CC BY-SA 3.0",
+          "url": "https://creativecommons.org/licenses/by-sa/3.0/"
+        }
+      }
+    },
+    "outline": [
+        {"x": 223,"y":45},
+        {"x": 257,"y":88 },
+        {"x": 270,"y":142 },
+        {"x": 257,"y":196 },
+        {"x": 223,"y":239},
+        {"x": 173,"y":263},
+        {"x": 118,"y":263},
+        {"x": 68,"y":239},
+        {"x": 34,"y":196},
+        {"x": 22,"y":142},
+        {"x": 34,"y":88},
+        {"x": 68,"y":45},
+        {"x": 118,"y":22},
+        {"x": 173,"y":22}
+    ],
+    "sound": {
+      "name": "Bounce Sound",
+      "file": {
+        "src": ["https://soundbible.com/grab.php?id=1626&type=mp3"],
+        "format": "mp3"
+      },
+      "attribution": {
+        "url": "https://soundbible.com/1626-Ball-Bounce.html",
+        "author": {
+          "name": "Popup Pixels",
+          "url": null
+        },
+        "license": {
+          "name": "Attribution 3.0",
+          "url": "https://creativecommons.org/licenses/by/3.0/us/"
+        }
+      }
+    }
+  }
+  
