@@ -9,6 +9,8 @@ import Coordinate2DList from './Coordinate2DList';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+const ASSET_PATH = './assets/';
+
 @Injectable()
 @Component({
   selector: 'app-drop-kick',
@@ -46,14 +48,14 @@ export class DropKickComponent implements AfterContentInit {
     this.context = this.canvas.getContext("2d");
     this.kickerImage.onload = this.drawKicker;
     
-    this.$http.get<NamedUrls>('/assets/kickers.json').subscribe((data) => {
+    this.$http.get<NamedUrls>(`${ASSET_PATH}kickers.json`).subscribe((data) => {
       this.kickers = data;
       this.selectedKicker = this.kickers[0];
       this.onChangeKicker({init:true});
     });
 
         
-    this.$http.get<NamedUrls>('/assets/kickees.json').subscribe(( data ) => {
+    this.$http.get<NamedUrls>(`${ASSET_PATH}kickees.json`).subscribe(( data ) => {
         this.kickees = data;
         this.selectedKickee = this.kickees[0];
         this.onChangeKickee({init:true});
@@ -65,7 +67,7 @@ export class DropKickComponent implements AfterContentInit {
   onChangeKicker ($event: object) {
     this.selectedKickerData = null;
     if(this.selectedKicker === null) return;
-    this.$http.get<KickerData>(`/assets/${this.selectedKicker.url}`).subscribe((data) => {
+    this.$http.get<KickerData>(`${ASSET_PATH}${this.selectedKicker.url}`).subscribe((data) => {
         this.selectedKickerData = data;
         if(this.selectedKickerData === null) return;
         if(this.kickerImage === null) return;
@@ -76,7 +78,7 @@ export class DropKickComponent implements AfterContentInit {
   onChangeKickee ($event: Partial<{init: boolean}>) {
     this.selectedKickeeData = null;
     if(this.selectedKickee===null)return;
-    this.$http.get<KickeeData>(`/assets/${this.selectedKickee.url}`).subscribe((data) => {
+    this.$http.get<KickeeData>(`${ASSET_PATH}${this.selectedKickee.url}`).subscribe((data) => {
         this.selectedKickeeData = data;
         if(this.selectedKickeeData === null) return;
         if(this.kickeeImage === null) return;
